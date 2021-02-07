@@ -1,0 +1,108 @@
+<html>
+    <head>
+        {% load static%}
+        <link href="{%static 'css/form1.css'%}" rel="stylesheet"/>
+        <style type="text/css">
+  
+  body {
+  font-family: "Lato", sans-serif;
+}
+
+
+
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.table1 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.td1, .th1 {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+        </style>
+    </head>
+    <body>
+      <div class="basic">
+          {% include "staffheader.html" %}
+      </div>
+
+      
+      
+      <div>
+        <h2>PRODUCT LIST</h2>
+
+        <table class="table1">  
+            <thead >  
+            <tr>
+                <th class="th1">Product ID</th>  
+                <th class="th1">Product Name</th>
+                <th class="th1">Stock Quantity</th>  
+                <th class="th1">Reorder Level</th>
+                <th class="th1">Status</th>  
+            </tr>  
+            </thead>  
+            <tbody>  
+            {% for pr in pro %}  
+            <tr>  
+                <td>{{ pr.prod_id }}</td>  
+                <td>{{ pr.prod_name }}</td>  
+                <td>{{ pr.prod_stkqty }}</td>
+                <td>{{ pr.prod_rol }}</td> 
+                <td>{{ pr.prod_status }}</td> 
+            <td>  
+                    <a href="/pordergenform/{{ pr.id }}"><input type="button" value="Generate"></span></a>   
+                </td>  
+            </tr>  
+        {% endfor %}  
+            </tbody>  
+        </table>
+        <br><br><br>
+        <br><br><br>
+
+        <h2>GENERATED PURCHASE ORDERS</h2>
+
+        <table class="table1">  
+            <thead >  
+            <tr>
+                <th class="th1">Product ID</th>  
+                <th class="th1">Product Name</th>
+                <th class="th1">Stock Quantity</th>  
+                <th class="th1">Reorder Level</th>
+                <th class="th1">Status</th>  
+            </tr>  
+            </thead>  
+            <tbody>  
+            {% for pr1 in pro1 %}  
+            <tr>  
+                <td>{{ pr1.prod_id }}</td>  
+                <td>{{ pr1.prod_name }}</td>  
+                <td>{{ pr1.prod_stkqty }}</td>
+                <td>{{ pr1.prod_rol }}</td> 
+                <td>{{ pr1.prod_status }}</td> 
+            <td>  
+                    <a href="/stockupdate/{{ pr1.id }}"><input type="button" value="Update Stock"></span></a>  
+                    
+                </td>  
+            </tr>  
+        {% endfor %}  
+            </tbody>  
+        </table>
+        
+      </div>  
+      
+      
+  </body>
+  </html>

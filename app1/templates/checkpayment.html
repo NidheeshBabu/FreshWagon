@@ -1,0 +1,97 @@
+<html>
+    <head>
+        {% load static%}
+        <link href="{%static 'css/formstyl.css'%}" rel="stylesheet"/>
+        <style type="text/css">
+.table1 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.td1, .th1 {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+            
+
+        </style>
+    </head>
+    <body>
+        <div class="basic">
+            {% include "staffheader.html" %}
+        </div>
+        <h2>NEW PAYMENTS</h2>
+
+        <table class="table1">  
+            <thead >  
+            <tr>
+                <th class="th1">Payment ID</th>  
+                <th class="th1">Order ID</th>
+                <th class="th1">Order Amount</th>  
+                <th class="th1">Customer ID</th>  
+                <th class="th1">Bank Name</th>
+                <th class="th1">IFSC Code</th>
+                <th class="th1">Account Number</th>
+                <th class="th1">Payment Date</th>
+            </tr>  
+            </thead>  
+            <tbody>  
+            {% for pay in n %}  
+            <tr>  
+                <td>{{ pay.payment_id }}</td>  
+                <td>{{ pay.order_id}}</td>  
+                <td>{{ pay.payment_amt}}</td>
+                <td>{{ pay.cust_id}}</td>  
+                <td>{{ pay.bank_name}}</td>
+                <td>{{ pay.ifsc_code}}</td>
+                <td>{{ pay.acc_no}}</td>
+                <td>{{ pay.payment_dt}}</td>    
+            <td>  
+                    <a href="/approvepay/{{ pay.id }}"><input type="button" value="Approve"></span></a>   
+                </td>  
+            </tr>  
+        {% endfor %}  
+            </tbody>  
+        </table>
+
+        <h2>OLD PAYMENTS</h2>
+
+        <table class="table1">  
+            <thead >  
+            <tr>
+                <th class="th1">Payment ID</th>  
+                <th class="th1">Order ID</th>
+                <th class="th1">Payment Amount</th>  
+                <th class="th1">Customer ID</th>  
+                <th class="th1">Bank Name</th>
+                <th class="th1">IFSC Code</th>
+                <th class="th1">Account Number</th>
+                <th class="th1">Payment Date</th>
+            </tr>  
+            </thead>  
+            <tbody>  
+            {% for payo in o %}  
+            <tr>  
+                <td>{{ payo.payment_id }}</td>  
+                <td>{{ payo.order_id}}</td>  
+                <td>{{ payo.payment_amt}}</td>
+                <td>{{ payo.cust_id}}</td>  
+                <td>{{ payo.bank_name}}</td>
+                <td>{{ payo.ifsc_code}}</td>
+                <td>{{ payo.acc_no}}</td>
+                <td>{{ payo.payment_dt}}</td>    
+             
+            </tr>  
+        {% endfor %}  
+            </tbody>  
+        </table>
+
+</body>
+</html>
+

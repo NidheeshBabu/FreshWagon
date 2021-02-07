@@ -1,0 +1,65 @@
+<html>
+    <head>
+        {% load static%}
+        <link href="{%static 'css/formstyl.css'%}" rel="stylesheet"/>
+        <style type="text/css">
+.table1 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.td1, .th1 {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+            
+
+        </style>
+    </head>
+    <body>
+        <div class="basic">
+            {% include "staffheader.html" %}
+        </div>
+        <h2>ORDER DETAILS</h2>
+
+        <table class="table1">  
+            <thead >  
+            <tr>
+                <th class="th1">Product ID</th>  
+                <th class="th1">Product Name</th>
+                <th class="th1">Order Quantity</th>  
+                <th class="th1">Amount</th>  
+            </tr>  
+            </thead>  
+            <tbody>  
+            {% for order in or %}  
+            <tr>  
+                <td>{{ order.prod_id }}</td>  
+                <td>{{ order.prod_name}}</td>  
+                <td>{{ order.order_qty}}</td>
+                <td>{{ order.prod_amt}}</td>  
+            </tr>  
+        {% endfor %}  
+            </tbody>  
+        </table>
+        <h2>Total Amount- {{orr.order_amt}}</h2>
+        <hr>
+        <h2>Customer Name: {{cu.cust_name}}</h2>
+        <h2>Address: &nbsp;&nbsp;&nbsp;{{cu.cust_address}}<br></h2>
+        <h2>Contact Number:{{cu.cust_phno}}</h2>
+        <h2>Order Date :{{orr.order_dt}}</h2>
+        <h2>Payment status:{{cod}}{{pa.payment_status}}</h2>
+        <form method="POST" action="/deliver/{{orr.id}}">
+            {% csrf_token %}
+            <input type="submit" value="DELIVER"></a>
+        </form>
+
+</body>
+</html>
+

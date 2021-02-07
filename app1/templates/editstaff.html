@@ -1,0 +1,83 @@
+<html>
+    <head>
+        {% load static%}
+        <link href="{%static 'css/formstyl.css'%}" rel="stylesheet"/>
+        <style type="text/css">
+            
+
+        </style>
+    </head>
+    <body>
+        <div class="basic">
+            {% include "adminheader.html" %}
+        </div>
+        <div align="center">
+            <h2><b>EDIT STAFF DETAILS</b></h2>
+            
+            
+            <div class="formcontainer">
+              <p>Enter Staff Details</p>
+            </br>
+            <form method="POST" action="/updatestaff/{{ st.id }}">
+              {% csrf_token %}
+
+
+              
+
+              <div class="row">
+                
+                <div class="col-75">
+                    <label>Staff Name</label>
+                   <input type="text" name="name" placeholder="Name" value="{{st.staff_name}}" required=""><br>
+                </div>
+             </div>
+            
+             <div class="row">
+              <div class="col-75">
+                <label>Contact Number</label>
+                <input type="text"  name="phno" placeholder="Contact Number" value="{{st.staff_phno}}" required=""><br>
+              </div>
+             </div>
+              <div class="row">
+                <div class="col-75">
+                    <label>Address</label>
+                  <input type="text"  name="address" placeholder="Address" value="{{st.staff_address}}" required=""><br>
+                </div>
+              </div>
+              
+             <div class="row"> 
+                    <div class="col-75">
+                        <label>Date of Joining</label>
+                      <input type="date"  name="dateofjoin" value="{{st.join_date}}" required=""><br>
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col-75">
+                            <label>E-Mail</label>
+                          <input type="text"  name="email" placeholder="E-mail" value="{{st.staff_email}}" required=""><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-75">
+                            <label>Status</label>
+                          <input type="text"  name="status" placeholder="Status" value="{{st.staff_status}}" required="" ><br>
+                        </div>
+                    </div>
+              
+              <div class="row">
+               <input type="submit" value="Submit" ><br>
+              </div>
+            
+            
+              <br> <br> <br> <br>
+            </form>
+            
+            </div>
+            
+            
+            </div>
+            </body>
+            </html>
+            
+
+

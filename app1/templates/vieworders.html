@@ -1,0 +1,57 @@
+<html>
+    <head>
+        {% load static%}
+        <link href="{%static 'css/formstyl.css'%}" rel="stylesheet"/>
+        <style type="text/css">
+.table1 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.td1, .th1 {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+            
+
+        </style>
+    </head>
+    <body>
+        <div class="basic">
+            {% include "staffheader.html" %}
+        </div>
+        <h2>ORDERS</h2>
+
+        <table class="table1">  
+            <thead >  
+            <tr>
+                <th class="th1">Order ID</th>  
+                <th class="th1">Order Date</th>
+                <th class="th1">Order Amount</th>  
+                <th class="th1">Customer ID</th>  
+            </tr>  
+            </thead>  
+            <tbody>  
+            {% for order in or %}  
+            <tr>  
+                <td>{{ order.order_id }}</td>  
+                <td>{{ order.order_dt}}</td>  
+                <td>{{ order.order_amt}}</td>
+                <td>{{ order.cust_id}}</td>  
+            <td>  
+                    <a href="/orderdtl/{{ order.id }}"><img src="{% static '/images/detailsbtn.png' %}" alt="editbtn" width="35" height="35"></span></a>   
+                </td>  
+            </tr>  
+        {% endfor %}  
+            </tbody>  
+        </table>
+
+</body>
+</html>
+

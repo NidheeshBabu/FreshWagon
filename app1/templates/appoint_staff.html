@@ -1,0 +1,109 @@
+<html>
+    <head>
+        {% load static%}
+        <link href="{%static 'css/formstyl.css'%}" rel="stylesheet"/>
+        <style type="text/css">
+        input[type=tel],input[type=email] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+        </style>
+        <script type="text/javascript">
+            function valid()
+		          {	
+                var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+			          if(f2.custphno.value.length != 10)
+			            {
+				            alert("Phone Number Is Not Valid !!")
+				            f2.custphno.focus();
+				            return false;
+			            }
+			          else if(reg.test(f2.custemail.value) == false)
+			            {
+				              alert('Invalid Email Address !!');
+				              f.custemail.focus();
+			              	return false;
+			            }
+		          }
+        
+        </script>
+    </head>
+    <body>
+        <div class="basic">
+            {% include "adminheader.html" %}
+        </div>
+        <div align="center">
+            <h2><b>STAFF APPROVE</b></h2>
+            
+            
+            <div class="formcontainer">
+              <p>Enter Staff Details</p>
+            </br>
+            <form method="POST" name="f3" action="/savestaff/">
+              {% csrf_token %}
+
+
+              <div class="row">
+                <div class="col-75">
+                   <input type="text" name="staffid" value="{{ff}}" readonly><br>
+                </div>
+             </div>
+
+              <div class="row">
+                <div class="col-75">
+                   <input type="text" name="name" placeholder="Name" required=""><br>
+                </div>
+             </div>
+            
+             <div class="row">
+              <div class="col-75">
+                <input type="tel"  name="phno" placeholder="Contact Number" required=""><br>
+              </div>
+             </div>
+              <div class="row">
+                <div class="col-75">
+                  <input type="text"  name="address" placeholder="Address" required=""><br>
+                </div>
+              </div>
+                
+                    <div class="row">
+                        <div class="col-75">
+                          <input type="email"  name="email" placeholder="E-mail" required=""><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-75">
+                         <select name="idtype" required="">
+                             <option>-select ID type-</option>
+                             <option value="adhaar" >Adhaar</option> 
+                             <option value="votersid" >Voters ID</option> 
+                             <option value="drivinglicence" >Drivers Licence</option>
+                             <option value="passport" >Passport</option>
+                             <option value="other" >Other</option>  
+                         </select>
+                      </div>
+                   </div>
+                    <div class="row">
+                      <div class="col-75">
+                        <input type="text"  name="idnum" placeholder="ID Proof Number" required=""><br>
+                      </div>
+                  </div>
+                    
+              
+              <div class="row">
+               <input type="submit" value="Submit" onclick="return valid()"><br>
+              </div>
+            </form>
+            
+            </div>
+            
+            
+            </div>
+            </body>
+            </html>
+            
+
+

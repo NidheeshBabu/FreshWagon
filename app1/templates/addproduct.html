@@ -1,0 +1,109 @@
+<html>
+    <head>
+        {% load static%}
+        <link href="{%static 'css/formstyl.css'%}" rel="stylesheet"/>
+        <style type="text/css">
+        </style>
+    </head>
+    <body>
+        <div class="basic">
+            {% include "adminheader.html" %}
+        </div>
+        <div align="center">
+            <h2><b>ADD PRODUCT</b></h2>
+            
+            
+            <div class="formcontainer">
+              <p>Enter Product Details</p>
+            </br>
+            <form method="POST" enctype="multipart/form-data" action="/productadd/">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-75">
+                   <input type="text" name="prodid" value="{{ff}}" ><br>
+                </div>
+             </div>
+
+              <div class="row">
+                <div class="col-75">
+                   <select name="catid" >
+                    {% for cat in ct %}
+                       <option value="{{cat.cat_id}}">{{cat.cat_name}}</option>
+                    {% endfor %} 
+                   </select>
+                </div>
+             </div>
+            
+             <div class="row">
+              <div class="col-75">
+                <input type="text"  name="prodname" placeholder="Product Name" required="" ><br>
+              </div>
+             </div>
+
+             <div class="row">
+                <div class="col-75">
+                  <textarea  name="proddesc" placeholder="Product Description" rows="5" cols="67" resize="none" required=""></textarea><br>
+                </div>
+               </div>
+
+               <div class="row">
+                <div class="col-75">
+                  <select name="produnit" aria-placeholder="Select unit" required="">
+                    <option value="Kg">Kilogram</option>
+                    <option value="L">Liter</option>
+                    <option value="nos">Number</option>
+                  </select>
+                </div>
+               </div>
+
+               <div class="row">
+                <div class="col-75">
+                  <input type="text"  name="prodprice" placeholder="Product Price"  required=""><br>
+                </div>
+               </div>
+
+               <div class="row">
+                <div class="col-75">
+                  <input type="text"  name="prodstkqty" placeholder="Product Stock Quantity"  required=""><br>
+                </div>
+               </div>
+
+               <div class="row">
+                <div class="col-75">
+                  <input type="text"  name="prodrol" placeholder="Product Reorder Level"  required=""><br>
+                </div>
+               </div>
+
+              <div class="row">
+                <div class="col-75">
+                    <table>
+                        <tr>
+                            <td>
+                <label>Product image</label>
+                            </td>
+                            <td>
+                  <input type="file"  name="prodimg" required=""><br>
+                  </td>
+                  </tr>
+                  </table>
+                </div>
+              </div>
+                
+              
+              <div class="row">
+               <input type="submit" value="Submit" ><br>
+              </div>
+            
+            
+              <br> <br> <br> <br>
+            </form>
+            
+            </div>
+            
+            
+            </div>
+            </body>
+            </html>
+            
+
+

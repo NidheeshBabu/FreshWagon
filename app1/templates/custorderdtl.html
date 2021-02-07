@@ -1,0 +1,375 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	{% load static %}
+	
+	<!--/tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Grocery Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--//tags -->
+	<link href="{% static 'css/bootstrap.css'%}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{% static 'css/style.css'%}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{% static 'css/font-awesome.css'%}" rel="stylesheet">
+	<!--pop-up-box-->
+	<link href="{% static 'css/popuo-box.css'%}" rel="stylesheet" type="text/css" media="all" />
+	<!--//pop-up-box-->
+	<!-- price range -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui1.css'%}">
+	<!-- fonts -->
+	<link href="{% static 'fonts/fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800'%}" rel="stylesheet">
+	<style type="text/css">
+		.space{
+		margin-left: 25px;
+		margin-right: 25px;
+	}
+	div.gallery {
+	  margin: 25px;
+	  border: 1px solid #ccc;
+	  float: left;
+	  width: 152px;
+	  height: auto;
+	  
+	
+	  
+	  
+	}
+	
+	div.gallery:hover {
+	  border: 1px solid #777;
+	}
+	
+	div.gallery img {
+	  width: 150px;
+	  height: 100px;
+	  border: 5px solid #ddd;
+	  border-radius: 4px;
+	 
+	
+	}
+	
+	div.desc {
+	 
+	  text-align: center;
+	}
+    table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+		</style>
+</head>
+
+<body>
+	<!-- top-header -->
+	<div class="header-most-top">
+		<p>Grocery Offer Zone Top Deals & Discounts</p>
+	</div>
+	<!-- //top-header -->
+	<!-- header-bot-->
+	<div class="header-bot">
+		<div class="header-bot_inner_wthreeinfo_header_mid">
+			<!-- header-bot-->
+			<div class="col-md-4 logo_agile">
+				<h1>
+					<a href="/">
+						<img src="{% static 'images/logo.png'%}" alt=" ">
+					</a>
+				</h1>
+			</div>
+			<!-- header-bot -->
+			<div class="col-md-8 header">
+				<!-- header lists -->
+				<ul>
+					
+					<li>
+						<a href="">
+							<span class="fa fa-truck" aria-hidden="true"></span>Track Order</a>
+					</li>
+					<li>
+						<span class="fa fa-phone" aria-hidden="true"></span> 001 234 5678
+					</li>
+					<li>
+						<a href="/logout">
+							<span class="fa fa-unlock-alt" aria-hidden="true"></span> Sign Out </a>
+					</li>
+					
+				</ul>
+				<!-- //header lists -->
+				<!-- search -->
+				<div class="agileits_search">
+					<form action="/custsearchprod/{{cu.id}}" method="POST">
+						{% csrf_token %}
+						<input name="search" type="search" placeholder="How can we help you today?" required="">
+						<button type="submit" class="btn btn-default" aria-label="Left Align">
+							<span class="fa fa-search" aria-hidden="true"> </span>
+						</button>
+					</form>
+				</div>
+				<!-- //search -->
+				<!-- cart details -->
+				
+				<!-- //cart details -->
+				<div class="clearfix"></div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	
+	<!-- //header-bot -->
+	
+			<!-- //tittle heading -->
+			
+			<!-- product right -->
+			<div >
+				<div class="wrapper">
+					<!-- first section -->
+					
+					
+                    <div class="main">
+                        <h2 align="center">Order Details</h2>
+                        <hr>
+                              <div style="overflow-x:auto;">
+                                <h2>ORDER DETAILS</h2>
+
+        <table class="table1">  
+            <thead >  
+            <tr>
+                <th class="th1">Product ID</th>  
+                <th class="th1">Product Name</th>
+                <th class="th1">Order Quantity</th>  
+                <th class="th1">Amount</th>  
+            </tr>  
+            </thead>  
+            <tbody>  
+            {% for order in or %}  
+            <tr>  
+                <td>{{ order.prod_id }}</td>  
+                <td>{{ order.prod_name}}</td>  
+                <td>{{ order.order_qty}}</td>
+				<td>{{ order.prod_amt}}</td> 
+            </tr>  
+        {% endfor %}  
+            </tbody>  
+		</table>
+		<br><br>
+		<div align="center">
+		<h2>Total Amount- {{orr.order_amt}}</h2><br>
+		<h3>Order Status- {{orr.order_status}}</h3>
+		<br><br>
+		<a href="/salesreturnprod/{{orr.id}}/{{cu.id}}"><input type="button" value="Return"></a>
+		<br>
+		<p align="center">**Return will not be approved after 2 days of delivery**<br>
+			**After returning order we will contact you for further actions**
+
+		</p>
+		
+		
+		
+		</div>
+                              </div>
+					<!-- //first section -->
+			 </div>
+			</div>
+		</div>
+	</div>
+    <br><br><br><br><br><br><br><br><br>
+	
+					
+		 
+
+	
+
+	<!-- js-files -->
+	<!-- jquery -->
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<!-- //jquery -->
+
+	<!-- popup modal (for signin & signup)-->
+	<script src="js/jquery.magnific-popup.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('.popup-with-zoom-anim').magnificPopup({
+				type: 'inline',
+				fixedContentPos: false,
+				fixedBgPos: true,
+				overflowY: 'auto',
+				closeBtnInside: true,
+				preloader: false,
+				midClick: true,
+				removalDelay: 300,
+				mainClass: 'my-mfp-zoom-in'
+			});
+
+		});
+	</script>
+	<!-- Large modal -->
+	<!-- <script>
+		$('#').modal('show');
+	</script> -->
+	<!-- //popup modal (for signin & signup)-->
+
+	<!-- cart-js -->
+	<script src="js/minicart.js"></script>
+	<script>
+		paypalm.minicartk.render(); //use only unique class names other than paypal1.minicart1.Also Replace same class name in css and minicart.min.js
+
+		paypalm.minicartk.cart.on('checkout', function (evt) {
+			var items = this.items(),
+				len = items.length,
+				total = 0,
+				i;
+
+			// Count the number of each item in the cart
+			for (i = 0; i < len; i++) {
+				total += items[i].get('quantity');
+			}
+
+			if (total < 3) {
+				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+				evt.preventDefault();
+			}
+		});
+	</script>
+	<!-- //cart-js -->
+
+	<!-- price range (top products) -->
+	<script src="js/jquery-ui.js"></script>
+	<script>
+		//<![CDATA[ 
+		$(window).load(function () {
+			$("#slider-range").slider({
+				range: true,
+				min: 0,
+				max: 9000,
+				values: [50, 6000],
+				slide: function (event, ui) {
+					$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+				}
+			});
+			$("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+
+		}); //]]>
+	</script>
+	<!-- //price range (top products) -->
+
+	<!-- flexisel (for special offers) -->
+	<script src="js/jquery.flexisel.js"></script>
+	<script>
+		$(window).load(function () {
+			$("#flexiselDemo1").flexisel({
+				visibleItems: 3,
+				animationSpeed: 1000,
+				autoPlay: true,
+				autoPlaySpeed: 3000,
+				pauseOnHover: true,
+				enableResponsiveBreakpoints: true,
+				responsiveBreakpoints: {
+					portrait: {
+						changePoint: 480,
+						visibleItems: 1
+					},
+					landscape: {
+						changePoint: 640,
+						visibleItems: 2
+					},
+					tablet: {
+						changePoint: 768,
+						visibleItems: 2
+					}
+				}
+			});
+
+		});
+	</script>
+	<!-- //flexisel (for special offers) -->
+
+	<!-- password-script -->
+	<script>
+		window.onload = function () {
+			document.getElementById("password1").onchange = validatePassword;
+			document.getElementById("password2").onchange = validatePassword;
+		}
+
+		function validatePassword() {
+			var pass2 = document.getElementById("password2").value;
+			var pass1 = document.getElementById("password1").value;
+			if (pass1 != pass2)
+				document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+			else
+				document.getElementById("password2").setCustomValidity('');
+			//empty string means no validation error
+		}
+	</script>
+	<!-- //password-script -->
+
+	<!-- smoothscroll -->
+	<script src="js/SmoothScroll.min.js"></script>
+	<!-- //smoothscroll -->
+
+	<!-- start-smooth-scrolling -->
+	<script src="js/move-top.js"></script>
+	<script src="js/easing.js"></script>
+	<script>
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 1000);
+			});
+		});
+	</script>
+	<!-- //end-smooth-scrolling -->
+
+	<!-- smooth-scrolling-of-move-up -->
+	<script>
+		$(document).ready(function () {
+			/*
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+			};
+			*/
+			$().UItoTop({
+				easingType: 'easeOutQuart'
+			});
+
+		});
+	</script>
+	<!-- //smooth-scrolling-of-move-up -->
+
+	<!-- for bootstrap working -->
+	<script src="js/bootstrap.js"></script>
+	<!-- //for bootstrap working -->
+	<!-- //js-files -->
+
+</body>
+
+</html>

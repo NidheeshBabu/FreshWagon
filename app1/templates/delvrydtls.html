@@ -1,0 +1,81 @@
+<html>
+    <head>
+        {% load static%}
+        <link href="{%static 'css/formstyl.css'%}" rel="stylesheet"/>
+        <style type="text/css">
+            input[type=textarea] ,textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+
+        </style>
+    </head>
+    <body>
+        <div class="basic">
+            {% include "staffheader.html" %}
+        </div>
+        <div align="center">
+            <h2><b>DELIVERY DETAILS</b></h2>
+            
+            
+            <div class="formcontainer">
+              <p>Enter Details</p>
+            </br>
+            <form method="POST" action="/delvrysubmit/{{ or.id }}">
+              {% csrf_token %}
+
+              <div class="row">
+                
+                <div class="col-75">
+                    <label>Delivery ID</label>
+                   <input type="text" name="delid"  value="{{ff}}" readonly><br>
+                </div>
+             </div>
+            
+             <div class="row">
+              <div class="col-75">
+                <label>Order ID</label>
+                <input type="text"  name="orderid"  value="{{or.order_id}}" readonly><br>
+              </div>
+             </div>
+              <div class="row">
+                <div class="col-75">
+                    <label>Delivery date</label>
+                  <input type="date"  name="deldt"  required=""><br>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-75">
+                    <label>Courier Name</label>
+                  <input type="text"  name="Couriername" required="" ><br>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-75">
+                    <label>Remarks</label>
+                  <input type="textarea"  name="delremark" required=""><br>
+                </div>
+              </div>
+              
+             
+              
+              <div class="row">
+               <input type="submit" value="Submit" ><br>
+              </div>
+            
+            
+              <br> <br> <br> <br>
+            </form>
+            
+            </div>
+            
+            
+            </div>
+            </body>
+            </html>
+            
+
+

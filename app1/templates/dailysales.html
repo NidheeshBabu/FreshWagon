@@ -1,0 +1,172 @@
+<html>
+    <head>
+        {% load static%}
+        <link href="{%static 'css/form1.css'%}" rel="stylesheet"/>
+        <style type="text/css">
+        body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 250px;
+  left: 10px;
+  background: grey;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #064579;
+}
+
+.main {
+  margin-left: 240px; /* Same width as the sidebar + left position in px */
+  font-size: 18px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 10;
+  top: 250px;
+  left: 10px;
+  background: grey;
+  overflow-x: hidden;
+  padding: 8px 0px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #064579;
+}
+
+.main {
+  margin-left: 240px; /* Same width as the sidebar + left position in px */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.table1 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.td1, .th1 {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+
+
+        </style>
+    </head>
+    <body>
+        <div class="basic">
+            {% include "adminheader.html" %}
+        </div>
+  
+        <div class="sidenav">
+          <h2>&nbsp;&nbsp;&nbsp;&nbsp;CATEGORIES</h2>
+          <a href="/stockreport">Stock Report</a>
+          <a href="/salesreport">Sales Report</a>
+        </div>
+        
+        <div class="main">
+            <h2>PRODUCTS SALES DETAILS</h2>
+            <h5>Select a date</h5>
+            <form method="POST" action="/getdailysales/">
+              {% csrf_token %}
+              <table>
+                <tr>
+                  <td>
+                    <label for="week">Select a date:</label>
+                    <input type="date" name="sales_dt" required=''>
+                    <input type="submit" value="Submit">
+                  </td>
+                </tr>
+                <tr>
+                  <br>
+                </tr>
+                
+                  </table>
+
+            </form>
+            <a href="/intervalsales"><input type="button" value="Interval Sales"></a>
+
+            <h2>SALES DETAILS</h2>
+
+        <table class="table1">  
+            <thead >  
+            <tr>
+                <th class="th1">ORDER ID</th>  
+                <th class="th1">ORDER DATE</th>
+                <th class="th1">ORDER AMOUNT</th>   
+                <th class="th1">CUSTOMER ID</th> 
+                <th class="th1">STATUS</th> 
+            </tr>  
+            </thead>  
+            <tbody>  
+            {% for o in od %}  
+            <tr>  
+                <td>{{ o.order_id }}</td>  
+                <td>{{ o.order_dt }}</td>  
+                <td>{{ o.order_amt }}</td> 
+                <td>{{ o.cust_id }}</td> 
+                <td>{{ o.order_status }}</td> 
+              
+            </tr>  
+            {% endfor %}  
+            </tbody>  
+        </table>
+        <h5>Total sales: {{tt}}</h5>
+        <h5>Sales return: {{ret}}</h5>
+        <hr>
+        <h5>Total revenue: {{rev}}</h5>
+
+
+            
+          
+        </div>  
+        
+        
+    </body>
+    </html>

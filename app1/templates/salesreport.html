@@ -1,0 +1,124 @@
+<html>
+    <head>
+        {% load static%}
+        <link href="{%static 'css/form1.css'%}" rel="stylesheet"/>
+        <style type="text/css">
+        body {
+  font-family: "Lato", sans-serif;
+}
+
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+
+.table1 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.td1, .th1 {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+
+
+        </style>
+    </head>
+    <body>
+        <div class="basic">
+            {% include "adminheader.html" %}
+        </div>
+  
+        
+        
+        <div>
+            <h2>PRODUCTS SALES DETAILS</h2>
+            <h5>Search by month</h5>
+            <form method="POST" action="/getsalesreport/">
+              {% csrf_token %}
+              <table>
+                <tr>
+                  <td>
+                    <label>Select Month & Year:</label>
+                    <select name="monthsales">
+                      <option value="1">January</option>
+                      <option value="2">February</option>
+                      <option value="3">March</option>
+                      <option value="4">April</option>
+                      <option value="5">May</option>
+                      <option value="6">June</option>
+                      <option value="7">July</option>
+                      <option value="8">August</option>
+                      <option value="9">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                    </select>
+                    <input type="text" name="yearsales" value="2021" required=''>
+                    <input type="submit">
+                  </td>
+                </tr>
+                <tr>
+                  <br>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="/intervalsales"><input type="button" value="Interval Sales"></a> 
+                  
+                    <a href="/dailysales"><input type="button" value="Daily Sales"></a>
+                  </td>
+                </tr>
+                  </table>
+
+            </form>
+
+            <h2>SALES DETAILS</h2>
+
+        <table class="table1">  
+            <thead >  
+            <tr>
+                <th class="th1">ORDER ID</th>  
+                <th class="th1">ORDER DATE</th>
+                <th class="th1">ORDER AMOUNT</th>   
+                <th class="th1">CUSTOMER ID</th> 
+                <th class="th1">STATUS</th> 
+            </tr>  
+            </thead>  
+            <tbody>  
+            {% for o in od %}  
+            <tr>  
+                <td>{{ o.order_id }}</td>  
+                <td>{{ o.order_dt }}</td>  
+                <td>{{ o.order_amt }}</td> 
+                <td>{{ o.cust_id }}</td> 
+                <td>{{ o.order_status }}</td> 
+              
+            </tr>  
+            {% endfor %}  
+            </tbody>  
+        </table>
+        <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total sales: {{tt}}</h2>
+        <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sales return: {{ret}}</h2>
+        <hr>
+        <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total revenue: {{rev}}</h2>
+
+
+
+
+
+            
+          
+        </div>  
+        
+        
+    </body>
+    </html>

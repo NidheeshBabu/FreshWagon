@@ -1,0 +1,54 @@
+<html>
+    <head>
+        {% load static%}
+        <link href="{%static 'css/form1.css'%}" rel="stylesheet"/>
+        <style type="text/css">
+        .main{
+          margin-left: 50;
+        }
+        .t{
+          border-spacing: 25px 15px;
+          border-collapse: collapse;
+        }
+        .tdd{
+          padding: 0px 15px;
+        }
+
+    
+    </style>
+    </head>
+    <body>
+        <div class="basic">
+            {% include "adminheader.html" %}
+        </div>
+       
+        
+        
+        <div class="main">
+          <h2>&nbsp;&nbsp;&nbsp;{{pr.prod_name}}</h2>
+          <hr>
+          <table class="t">
+            <tr>
+              <td class="tdd">
+                <img src="{{pr.prod_img}}" alt="image" width="300" height="200">
+              </td>
+              <td class="tdd">
+                <h5>{{pr.prod_id}}</h5>
+                <h5>{{pr.prod_desc}}</h5>
+                <h4>{{pr.prod_unit}} - &#8377;{{pr.prod_price}}</h4>
+                <a href="/removeprod/{{pr.id}}"><input type="button" value="Remove"></span></a>
+                <a href="/editprod/{{pr.id}}"><input type="button" value="Edit"></span></a>
+               
+              </td>
+            </tr>
+
+          </table>
+          
+
+          
+        </div>  
+  
+        
+        
+    </body>
+    </html>

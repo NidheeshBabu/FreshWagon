@@ -1,0 +1,71 @@
+<html>
+    <head>
+        {% load static%}
+        <link href="{%static 'css/formstyl.css'%}" rel="stylesheet"/>
+        <style type="text/css">
+        </style>
+    </head>
+    <body>
+        <div class="basic">
+            {% include "adminheader.html" %}
+        </div>
+        <div align="center">
+            <h2><b>ADD CATEGORY</b></h2>
+            
+            
+            <div class="formcontainer">
+              <p>Enter Category Details</p>
+            </br>
+            <form method="POST" enctype="multipart/form-data" action="/categoryadd/">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-75">
+                   <input type="text" name="catid" value="{{ff}}" readonly><br>
+                </div>
+             </div>
+
+              <div class="row">
+                <div class="col-75">
+                   <input type="text" name="catname" placeholder="Category Name" required=""><br>
+                </div>
+             </div>
+            
+             <div class="row">
+              <div class="col-75">
+                <textarea  name="catdesc" placeholder="Category Description" rows="5" cols="67" resize="none" required="" ></textarea><br>
+              </div>
+             </div>
+              <div class="row">
+                
+                <div class="col-75">
+                    <table>
+                        <tr>
+                            <td>
+                <label>Category image</label>
+                            </td>
+                            <td>
+                  <input type="file"  name="catimg"  width="150" height="100" required=""><br>
+                  </td>
+                  </tr>
+                  </table>
+                </div>
+              </div>
+                
+              
+              <div class="row">
+               <input type="submit" value="Submit" ><br>
+              </div>
+            
+            
+              <br> <br> <br> <br>
+            </form>
+            
+            </div>
+            
+            
+            </div>
+            </body>
+            </html>
+            
+
+

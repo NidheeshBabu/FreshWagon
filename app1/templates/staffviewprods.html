@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static%}
+  <link href="{%static 'css/form1.css'%}" rel="stylesheet"/>
+<style type="text/css">
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 250px;
+  left: 10px;
+  background: grey;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #064579;
+}
+
+.main {
+  margin-left: 240px; /* Same width as the sidebar + left position in px */
+  font-size: 15px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 152px;
+  height: auto;
+
+  
+  
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 150px;
+  height: 100px;
+  border: 5px solid #ddd;
+  border-radius: 4px;
+ 
+
+}
+
+div.desc {
+ 
+  text-align: center;
+}
+</style>
+</head>
+<body>
+    {% include "staffheader.html" %}
+    <div class="sidenav">
+      {% for pro in pd %}
+          <a href="/viewprod/{{pro.id}}">{{pro.prod_name}}</a>
+          {% endfor %}
+          
+    </div>
+    <div class="main">
+    <h1 align="center">PRODUCTS</h1>
+    {% for pro in pd %}
+    <div class="gallery">
+      
+          <img src="{{pro.prod_img}}" alt="image" >
+         
+        <div class="desc">
+            <h4>{{pro.prod_name}}</h4>
+            <h5>{{pro.prod_id}}</h5>
+            <h4>{{pro.prod_unit}} - &#8377;{{pro.prod_price}}</h4>
+            <table align="center">
+              <tr>
+                
+                <td>
+                  <a href="/stockupdate/{{pro.id}}"><input type="button" value="Stock Update"></span></a>
+                </td>
+              </tr>
+            </table>
+            
+            
+         
+      </div>
+      </div>
+      
+      {% endfor %} 
+      </div>
+      
+      
+      
+      </body>
+      </html>
+

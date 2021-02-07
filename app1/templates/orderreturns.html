@@ -1,0 +1,61 @@
+<html>
+    <head>
+        {% load static%}
+        <link href="{%static 'css/formstyl.css'%}" rel="stylesheet"/>
+        <style type="text/css">
+.table1 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.td1, .th1 {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+            
+
+        </style>
+    </head>
+    <body>
+        <div class="basic">
+            {% include "staffheader.html" %}
+        </div>
+        <h2>ORDER RETURNS</h2>
+        <br><br><br>
+        <h3>Sales Returns</h3>
+
+        <table class="table1">  
+            <thead >  
+            <tr>
+                <th class="th1">Return ID</th>  
+                <th class="th1">Customer ID</th>
+                <th class="th1">Order ID</th>    
+                <th class="th1">Amount</th>
+            </tr>  
+            </thead>  
+            <tbody>  
+            {% for order in ord %}  
+            <tr>  
+                <td>{{ order.return_id }}</td>  
+                <td>{{ order.cust_id}}</td>  
+                <td>{{ order.order_id}}</td> 
+                <td>{{ order.order_amt}}</td>
+            <td>  
+                    <a href="/returnorderdtl/{{order.id}}"><span><input type="button" value="View"></span></a>
+                     
+                </td>  
+            </tr>  
+        {% endfor %}  
+            </tbody>  
+        </table>
+
+
+</body>
+</html>
+

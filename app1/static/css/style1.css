@@ -1,0 +1,15 @@
+.para{color: salmon; font-size: 50pt;}
+
+.xyz{color: rgb(40, 230, 40)}
+.body{
+    background-image:"{% static '/images/bg1.jpg' %}";
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-size:cover;
+   }
+.div {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+    }

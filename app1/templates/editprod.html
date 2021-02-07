@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+<head>
+  <link href="{%static 'css/formstyl.css'%}" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css">
+
+
+
+</style>
+
+</head>
+<body>
+
+    <div class="basic">
+        {% include "adminheader.html" %}
+    </div>
+<div align="center">
+<h2><b>Edit Product Details</b></h2>
+
+
+<div class="logincontainer">
+  <p>Enter Details</p>
+</br>
+<form method="POST" action="/prodedit/{{pr.id}}">
+  {% csrf_token %}
+  <table>
+    <tr>
+      <td>
+        <label>Product ID</label>
+      </td>
+      <td>
+  <div class="row">
+    <div class="col-75">
+       <input type="text" name="prodid" value="{{pr.prod_id}}" readonly><br>
+    </div>
+ </div>
+       </td>
+       </tr>
+       <tr>
+         <td>
+           <label>Category ID</label>
+         </td>
+         <td>
+ <div class="row">
+  <div class="col-75">
+    <input type="text"  name="catid" value="{{pr.cat_id}}" size="40%" readonly><br>
+  </div>
+  </div>
+  </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <label>Product Name</label>
+    </td>
+    <td>
+    <div class="row">
+        <div class="col-75">
+          <input type="text"  name="prodname" value="{{pr.prod_name}}" size="60%" required=""><br>
+        </div>
+    </div>
+    </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Product Description</label>
+      </td>
+      <td>
+    <div class="row">
+        <div class="col-75">
+          <input type="text"  name="proddesc" value="{{pr.prod_desc}}" size="40%" required=""><br>
+        </div>
+    </div>
+    </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Unit</label>
+      </td>
+      <td>
+    <div class="row">
+        <div class="col-75">
+          <select name="produnit" aria-placeholder="Select unit" required="">
+            <option value="Kg">Kilogram</option>
+            <option value="L">Liter</option>
+            <option value="nos">Number</option>
+          </select>
+        </div>
+    </div>
+    </td>
+    <tr>
+    <td>
+        <label>Price</label>
+      </td>
+    <td>
+        <div class="row">
+            <div class="col-75">
+              <input type="number"  name="prodprice" value="{{pr.prod_price}}" size="40%" required=""><br>
+            </div>
+        </div>
+    </td>
+</tr>
+    <tr>
+    <td>
+        <label>Stock Quantity</label>
+      </td>
+    <td>
+        <div class="row">
+            <div class="col-75">
+              <input type="text"  name="stkqty" value="{{pr.prod_stkqty}}" size="40%" required=""><br>
+            </div>
+        </div>
+    </td>
+    </tr>
+    <tr>
+    <td>
+        <label>Reorder Level</label>
+      </td>
+    <td>
+        <div class="row">
+            <div class="col-75">
+              <input type="text"  name="prodrol" value="{{pr.prod_rol}}" size="40%" required=""><br>
+            </div>
+        </div>
+    </td>
+
+    </tr>
+    <tr>
+      <td>
+  <br> <br> <br>
+  <div class="row">
+   <input type="submit" value="Submit" align="center" ><br>
+  </div>
+  </td>
+  </tr>
+  
+  </table>
+
+
+
+  <br>
+</form>
+
+</div>
+
+
+</div>
+</body>
+</html>

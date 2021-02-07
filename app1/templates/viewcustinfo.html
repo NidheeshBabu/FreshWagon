@@ -1,0 +1,68 @@
+<html>
+    <head>
+        {% load static%}
+        <link href="{%static 'css/formstyl.css'%}" rel="stylesheet"/>
+        <style type="text/css">
+
+            
+
+        </style>
+    </head>
+    <body>
+        <div class="basic">
+            {% include "adminheader.html" %}
+        </div>
+        <h2>Customer Details</h2>
+        <hr>
+        <table size="40%">
+            <tr>
+                <td>
+                    <h4>Customer Name</h4>
+                </td>
+                <td>
+                    <h4>:{{cu.cust_name}}</h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4>Address</h4>
+                </td>
+                <td>
+                    <h4>:{{cu.cust_address}}</h4>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <h4>Phone number</h4>
+                </td>
+                <td>
+                    <h4>:{{cu.cust_phno}}</h4>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <h4>Email  :</h4>
+                </td>
+                <td>
+                    <h4>:{{cu.cust_email}}</h4>
+                </td>
+
+            </tr>
+        
+        </table>
+
+        
+
+
+
+
+
+
+
+       
+
+</body>
+</html>
+

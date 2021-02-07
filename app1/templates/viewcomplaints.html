@@ -1,0 +1,60 @@
+<html>
+    <head>
+        {% load static%}
+        <link href="{%static 'css/formstyl.css'%}" rel="stylesheet"/>
+        <style type="text/css">
+.table1 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.td1, .th1 {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+            
+
+        </style>
+    </head>
+    <body>
+        <div class="basic">
+            {% include "adminheader.html" %}
+        </div>
+        <h2>Complaints</h2>
+
+        <table class="table1">  
+            <thead >  
+            <tr>
+                <th class="th1">Complaint ID</th>  
+                <th class="th1">Customer ID</th>
+                <th class="th1">Customer Name</th>
+                <th class="th1">Product ID</th>  
+                <th class="th1">Complaint</th>  
+                <th class="th1">Complaint Date</th> 
+            </tr>  
+            </thead>  
+            <tbody>  
+            {% for com in co %}  
+            <tr>  
+                <td>{{ com.comp_id }}</td>  
+                <td>{{ com.cust_id }}</td>
+                <td>{{ com.cust_name }}</td>
+                <td>{{ com.prod_id }}</td>
+                <td>{{ com.complaint }}</td>
+                <td>{{ com.comp_date }}</td>
+                <td><a href="/viewcustinfo/{{com.cust_id}}"><input type="button" value="Contact info"></a></td>  
+            
+            </tr>  
+        {% endfor %}  
+            </tbody>  
+        </table>
+
+</body>
+</html>
+

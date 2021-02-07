@@ -1,0 +1,63 @@
+<html>
+    <head>
+        {% load static%}
+        <link href="{%static 'css/formstyl.css'%}" rel="stylesheet"/>
+        <style type="text/css">
+            
+
+        </style>
+    </head>
+    <body>
+        <div class="basic">
+            {% include "staffheader.html" %}
+        </div>
+        <div align="center">
+            <h2><b>UPDATE STOCK DETAILS</b></h2>
+            
+            
+            <div class="formcontainer">
+              <p>Enter Details</p>
+            </br>
+            <form method="POST" action="/updatestock/{{ pr.id }}">
+              {% csrf_token %}
+
+              <div class="row">
+                
+                <div class="col-75">
+                    <label>Product Price</label>
+                   <input type="text" name="prodprice"  value="{{pr.prod_price}}"><br>
+                </div>
+             </div>
+            
+             <div class="row">
+              <div class="col-75">
+                <label>Stock Quantity</label>
+                <input type="text"  name="prodstkqty"  value="{{pr.prod_stkqty}}"><br>
+              </div>
+             </div>
+              <div class="row">
+                <div class="col-75">
+                    <label>Product Status</label>
+                  <input type="text"  name="prodstatus"  value="{{pr.prod_status}}"><br>
+                </div>
+              </div>
+              
+             
+              
+              <div class="row">
+               <input type="submit" value="Submit" ><br>
+              </div>
+            
+            
+              <br> <br> <br> <br>
+            </form>
+            
+            </div>
+            
+            
+            </div>
+            </body>
+            </html>
+            
+
+

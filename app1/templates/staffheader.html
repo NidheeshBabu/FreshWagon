@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static%}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: grey;
+
+  
+}
+
+.navbar a {
+  float: right;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 40px;
+  text-decoration: none;
+  
+}
+
+.dropdown {
+  float: right;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.table,.td,.tr{
+border: 2px;
+
+position: relative;
+overflow: hidden;
+text-align: center;
+align:center;
+
+
+
+
+}
+.table{
+border-spacing: 1px;
+border-collapse:separate;
+
+align:center;
+
+
+
+}
+.tablecat,.tdcat{
+border-spacing: 1px;
+border-collapse:separate;
+padding: 15px;
+align:center;
+
+
+
+}
+.poster{
+padding-right: 10px;
+padding-left: 10px;
+padding-top: 10px;
+align:center;
+
+}
+
+.image {
+border: 5px solid #ddd;
+border-radius: 4px;
+padding: 5px;
+width: 150px;
+height: 100px;
+}
+
+</style>
+</head>
+<body>
+  
+  <table style="color:white" width="70%" class="table" align="center" >
+    <tr class="tr">
+        <td class="td"><img src="{% static '/images/logo.png' %}" width="250" height="175"></td>
+        
+        
+      <form method="POST" action="/staffsearchprod/">
+          {% csrf_token %}
+        <td align="right">
+            <div>
+                <input type='text' placeholder='Search...' name="search" id='search-text-input' size="150%" height="70%" width="100%"/>
+            </div>
+            
+        </td>
+        <td align="left">
+            <div id='button-holder' >
+              <input type="image" src="{% static '/images/search.webp' %}" alt="Submit" width="48" height="48">
+             </div>
+        </td>
+      </form>
+        <td class="td">
+            <div id='button-wishlist'>
+                <img src="{% static '/images/wishlist.png' %}" width="50" height="50"/>
+            </div>
+         </td>
+         <td class="td">
+            <div id='button-cart'>
+                <img src="{% static '/images/cart.jpg' %}" width="50" height="50"/>
+            </div>
+         </td>
+         <td class="td">
+            <div id='button-login'>
+                <img src="{% static '/images/loginicon.jpg' %}" width="60" height="60"/>
+            </div>
+         </td>
+    </tr>
+</table>
+
+<div class="navbar" >
+    <a href="/staffcategoryview">Add Stock</a>
+    <div class="dropdown">
+        <button class="dropbtn">Order Processing 
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="/vieworders/">View Orders</a>
+          <a href="/orderreturn/">Order Returns</a>
+          <a href="/checkpay">Check Payment</a>
+          
+          
+        </div>
+    </div>
+    <a href="/generateporder/">Generate Purchase Order</a>
+    <a href="/logout">Sign Out</a>
+    <a href="/staffhome">Home</a>
+    
+
+</div>
+
+
+</body>
+</html>

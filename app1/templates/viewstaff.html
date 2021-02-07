@@ -1,0 +1,60 @@
+<html>
+    <head>
+        {% load static%}
+        <link href="{%static 'css/formstyl.css'%}" rel="stylesheet"/>
+        <style type="text/css">
+.table1 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.td1, .th1 {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+            
+
+        </style>
+    </head>
+    <body>
+        <div class="basic">
+            {% include "adminheader.html" %}
+        </div>
+        <h2>STAFFS</h2>
+
+        <table class="table1">  
+            <thead >  
+            <tr>
+                <th class="th1">Staff ID</th>  
+                <th class="th1">Name</th>
+                <th class="th1">Contact No.</th>  
+                <th class="th1">Status</th> 
+                <th class="th1">Join Date</th> 
+            </tr>  
+            </thead>  
+            <tbody>  
+            {% for staff in st %}  
+            <tr>  
+                <td>{{ staff.staff_id }}</td>  
+                <td>{{ staff.staff_name}}</td>  
+                <td>{{ staff.staff_phno}}</td>
+                <td>{{ staff.staff_status}}</td> 
+                <td>{{ staff.join_date }}</td> 
+            <td>  
+                    <a href="/editstaff/{{ staff.id }}"><img src="{% static '/images/editbtn.png' %}" alt="editbtn" width="25" height="25"></span></a>  
+                    <a href="/removestaff/{{ staff.id }}"><img src="{% static '/images/removebtn.jpg' %}" alt="removebtn" width="25" height="25"></span></a>  
+                </td>  
+            </tr>  
+        {% endfor %}  
+            </tbody>  
+        </table>
+
+</body>
+</html>
+

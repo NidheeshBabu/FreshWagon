@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+<head>
+  <link href="{%static 'css/formstyl.css'%}" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css">
+
+
+
+</style>
+
+</head>
+<body>
+
+    <div class="basic">
+        {% include "staffheader.html" %}
+    </div>
+<div align="center">
+<h2><b>Generate Purchase Order</b></h2>
+
+
+<div class="logincontainer">
+  <p>Enter Order Details</p>
+</br>
+<form method="POST" action="/pordergen/">
+  {% csrf_token %}
+  <table>
+    <tr>
+      <td>
+        <label>OrderID</label>
+      </td>
+      <td>
+  <div class="row">
+    <div class="col-75">
+       <input type="text" name="porderid" value="{{ff}}" readonly><br>
+    </div>
+ </div>
+       </td>
+       </tr>
+       <tr>
+         <td>
+           <label>Product ID</label>
+         </td>
+         <td>
+ <div class="row">
+  <div class="col-75">
+    <input type="text"  name="prodid" value="{{pro.prod_id}}" size="40%" readonly><br>
+  </div>
+  </div>
+  </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <label>Product Name</label>
+    </td>
+    <td>
+    <div class="row">
+        <div class="col-75">
+          <input type="text"  name="prodname" value="{{pro.prod_name}}" size="40%" readonly><br>
+        </div>
+    </div>
+    </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Required Quantity</label>
+      </td>
+      <td>
+    <div class="row">
+        <div class="col-75">
+          <input type="number"  name="reqqty" size="40%" required=""><br>
+        </div>
+    </div>
+    </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Order Date</label>
+      </td>
+      <td>
+    <div class="row">
+        <div class="col-75">
+          <input type="date"  name="orddate" size="40%" required=""><br>
+        </div>
+    </div>
+    </td>
+    </tr>
+    <tr>
+      <td>
+  <br> <br> <br>
+  <div class="row">
+   <input type="submit" value="Confirm Order" align="center" ><br>
+  </div>
+  </td>
+  </tr>
+  
+  </table>
+
+
+
+  <br>
+</form>
+
+</div>
+
+
+</div>
+</body>
+</html>

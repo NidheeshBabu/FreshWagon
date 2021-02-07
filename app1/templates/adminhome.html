@@ -1,0 +1,68 @@
+<html>
+    <head>
+        {% load static%}
+        <link href="{%static 'css/form1.css'%}" rel="stylesheet"/>
+        <style type="text/css">
+        body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 250px;
+  left: 10px;
+  background: grey;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #064579;
+}
+
+.main {
+  margin-left: 240px; /* Same width as the sidebar + left position in px */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+
+        </style>
+    </head>
+    <body>
+        <div class="basic">
+            {% include "adminheader.html" %}
+        </div>
+  
+        <div class="sidenav">
+          <h2>&nbsp;&nbsp;&nbsp;&nbsp;REPORTS</h2>
+          <a href="/stockreport">Stock Report</a>
+          <a href="/salesreport">Sales Report</a>
+        </div>
+        
+        <div class="main">
+          <br>
+          <img src="{% static 'images/banner2.jpg'%}" alt="" width="1050" height="475">
+          
+        </div>  
+        
+        
+    </body>
+    </html>
